@@ -1,32 +1,12 @@
-/* CSS Document */
-
-/*********/
-/* FONTS */
-/*********/
-@font-face {
-    font-family: 'harley';
-    src: url('../fonts/compactabt-webfont.woff2') format('woff2'),
-
-    url('../fonts/compactabt-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
-
-
-/**************/
-/* CSS REMEDY */
-/**************/
+/* Simpele CSS Remedy - naar een idee van Jen Simmons */
+/* https://github.com/jensimmons/cssremedy */
 *, *::after, *::before {
   box-sizing:border-box;
 }
 
-button, summary {
-    cursor: pointer;
+button:not([disabled]), summary {
+    cursor:pointer;
 }
-
 
 
 
@@ -35,615 +15,141 @@ button, summary {
 /* CUSTOM PROPERTIES */
 /*********************/
 :root {
-    /* light mode */
-    --color-text:#111;
-    --color-background:#eee;
-    --background-HD: lightyellow;
+  --color-main:#333;
+  --color-background:#ccc;
 
-    --background-Duiken: lightblue;
-    --logo-kleur: white;
-}
-
-    @media {
-  body:not(.lightMode) {
-    /* dark theme */
-
-    --background-HD: ;
-
-/*
-    --background-Duiken: midnightblue;
-    --logo-kleur: gold;
-*/
-  }
+    --color-list-background:#fff;
 }
 
 
 
-/****************/
-/* MIJN CODE */
-/****************/
+
+
+/********************/
+/* ALGEMENE STIJLEN */
+/********************/
 body {
-  height:100vh;
   margin:0;
-/*  font-family: eenfont, arial, sans-serif;*/
-  color:var(--color-text);
-  background-color:var(--color-background);
+    padding:1em;
 
-    list-style: none;
-    min-height: 100%;
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-section:nth-of-type(2) {
-    font-family: futura, eenfont, arial, sans-serif;
-}
-
-section:nth-of-type(1) {
-    font-size: 1em;
-    font-family: harley, arial, sans-serif;
-}
-
-
-
-/*******************************/
-/* HARLEY DAVIDSON animatie*/
-/*******************************/
-
-section:nth-of-type(1) {
-    background-color: var(--background-HD);
-    font-family: harley, arial, sans-serif;
-
-
-    height:100vh;
-  margin:0;
-    z-index: 11;
-
+    display:grid;
+/*    gap:1em;*/
   background-color:var(--color-background);
   font-family:'Saira', sans-serif;
   color:var(--color-main);
-
-    display:grid;
-    grid-template-rows:1fr 1fr;
-
-    background:
-        radial-gradient(
-            circle at center bottom,
-            gold 10%,
-            orange,
-            skyblue 30%)
-        center top / 100% 50%
-        no-repeat,
-
-        conic-gradient(
-            at center 45%,
-            transparent 165deg,
-            lightgrey 165deg 179deg,
-            white 179deg 180deg,
-            lightgrey 180deg 195deg,
-            transparent 195deg)
-        center center / 100% 100%
-        no-repeat,
-
-        radial-gradient(
-            circle at center top,
-            GoldenRod 40%,
-            burlywood
-        )
-        center bottom / 100% 50%
-        no-repeat;
 }
 
-h1:nth-of-type(1) {
-    z-index: 1000;
-    place-self:end center;
-}
 
-/* cantus deel nr 1 */
-section:nth-of-type(1) span:nth-of-type(1)::before {
-    content:"";
-    position:absolute;
-    width: .3em; height: 1.1em;
-    border:solid .25em green;
-      z-index: 0;
-      left: 3.6em;
-      top: 48.7%;
 
-    border-radius: 25%;
-/*     het vervormen van de cactus */
-}
 
-/* cactus deel nr 2 */
-section:nth-of-type(1) span:nth-of-type(1)::after {
-    content:"";
-    position:absolute;
-    width: .3em; height: .3em;
-    border:solid .25em green;
-      z-index: 0;
-      left: 3.3em;
-      top: 50%;
 
-    border-radius: 25%;
-}
-
-/* cactus deel nr 3 */
-section:nth-of-type(1) span:nth-of-type(2)::before {
-    content:"";
-    position:absolute;
-    width: .5em; height: 2.8em;
-    border:solid .475em green;
-      z-index: 0;
-      left: 2.5em;
-      top: 46.5%;
-
-    border-radius: 100% 100% 25% 25%;
-}
-
-/* cactus deel nr 4 */
-section:nth-of-type(1) span:nth-of-type(2)::after {
-    content:"";
-    position:absolute;
-    width: .3em; height: .3em;
-    border:solid .25em green;
-      z-index: 0;
-      left: 2.1em;
-      top: 48.4%;
-
-    border-radius: 25%;
-}
-
-/* cactus deel nr 5 */
-section:nth-of-type(1) span:nth-of-type(3)::before {
-    content:"";
-    position:absolute;
-    width: .3em; height: 1.1em;
-    border:solid .25em green;
-      z-index: 0;
-      left: 1.8em;
-      top: 47.1%;
-
-    border-radius: 25%;
-}
-
-/* de motor */
-section:nth-of-type(1) img:nth-of-type(1) {
+/***********/
+/* LIJSTEN */
+/***********/
+ul {
     position:relative;
-    place-self: end center;
-    display:block;
-    width:2vh;
-    transform-origin:center bottom;
-    z-index: 200;
-    left: 47%;
-    top: 1em;
-}
 
-section:nth-of-type(1):hover img {
-  animation-name: motor-animantion;
-  animation-duration: 5s;
-/*  animation-iteration-count: none;*/
+    height:16em;
+    margin:0;
+    padding:1em;
+
+    display:flex;
 /*
-  animation-play-state: paused;
-  animation-timing-function: linear;
+    gap:1em;
+    overflow-x:scroll;
+    scroll-snap-type:x mandatory;
+    overscroll-behavior-x: contain;
+    scroll-behavior: smooth;
 */
-/*    WERKT NIET   *************************/
+
+    list-style:none;
+    background-color:var(--color-list-background);
 }
 
-@keyframes motor-animantion{
-  100% {
-    transform: translateY(45em) scale(15);
-  }
+ul:empty::after {
+    content:"sleep je favo foto's naar dit lijstje (of gebruik de knopjes → boring!)";
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+    max-width:16em;
+    text-align:center;
+}
+
+/* een item in een lijst */
+li {
+    position:relative;
+/*    aspect-ratio:1/1;*/
+    flex-shrink:0;
+/*    scroll-snap-align:center;*/
+
+    /* voor de affordance */
+    cursor:grab;
+}
+
+li img {
+    width:100%;
+}
+
+li button {
+    position:absolute;
+    top:.5rem;
+    right:.5rem;
+    width:3rem;
+    height:3rem;
+    border:none;
+    border-radius:.5rem;
+    font-size:1.5em;
+
+    transition:.1s;
+}
+
+li button::after {
+    content:"💙";
+}
+
+li button:hover {
+    font-size:2em;
+}
+
+li button:hover::after {
+    content:"💚";
+}
+
+li button:focus {
+    font-size:2em;
+    outline:none;
+    text-shadow:
+        0 0 .25em deeppink,
+        0 0 .25em deeppink,
+        0 0 .25em deeppink,
+        0 0 .25em deeppink,
+        0 0 .25em deeppink;
+}
+
+
+li button:active {
+    transform:translatey(.1em);
+}
+
+/* knop in favo lijst */
+ul:first-of-type li button::after {
+    content:"💩";
 }
 
 
 
 
-
-
-
-
-/*******************************/
-/* Duiken inbeeld animatie*/
-/*******************************/
-
-
-section:nth-of-type(2) {
-    background-color: var(--background-Duiken);
-    position: relative;
-}
-
-
-h2 {
-    z-index: 1000;
-    position: relative;
-    left: 20em;
-    color: var(--logo-kleur);
-}
-
-
-
-/******************************/
-/* de letter op een rij zetten /DUIKEN/ */
-/* de letter 'd'*/
-section:nth-of-type(2) span:nth-of-type(1) {
-    position: relative;
-    top: .4em;
-    left: 3.4em;
-    font-size: 1.5em;
-}
-
-/* de letter 'u'*/
-section:nth-of-type(2) span:nth-of-type(2) {
-    position: relative;
-    top: .4em;
-    left: 3.4em;
-    font-size: 1.5em;
-}
-
-/* de letter 'i'*/
-section:nth-of-type(2) span:nth-of-type(3) {
-    position: relative;
-    top: .4em;
-    left: 3.4em;
-    font-size: 1.5em;
-}
-
-/* de letter 'k'*/
-section:nth-of-type(2) span:nth-of-type(4) {
-    position: relative;
-    top: .4em;
-    left: 3.4em;
-    font-size: 1.5em;
-}
-
-/* de letter 'e'*/
-section:nth-of-type(2) span:nth-of-type(5) {
-    position: relative;
-    top: .4em;
-    left: 3.4em;
-    font-size: 1.5em;
-}
-
-/* de letter 'n'*/
-section:nth-of-type(2) span:nth-of-type(6) {
-    position: relative;
-    top: .4em;
-    left: 3.4em;
-    font-size: 1.5em;
-}
 
 /*******************/
-/* de letter op een rij zetten /INBEELD/ */
-/* de letter 'i'*/
-section:nth-of-type(2) span:nth-of-type(8) {
-    position: relative;
-    top: 1.5em;
-    right: 2em;
-    font-size: 1.5em;
+/* TIJDENS DRAGGEN */
+/*******************/
+
+body.dragging,
+body.dragging * {
+    cursor:grabbing;
 }
 
-/* de letter 'n'*/
-section:nth-of-type(2) span:nth-of-type(9) {
-    position: relative;
-    top: 1.5em;
-    right: 2.1em;
-    font-size: 1.5em;
+li.sortable-fallback button {
+    display:none;
 }
-
-/* de letter 'b'*/
-section:nth-of-type(2) span:nth-of-type(10) {
-    position: relative;
-    top: 1.5em;
-    right: 2.2em;
-    font-size: 1.5em;
-}
-
-/* de letter 'e'*/
-section:nth-of-type(2) span:nth-of-type(11) {
-    position: relative;
-    top: 1.5em;
-    right: 2.3em;
-    font-size: 1.5em;
-}
-
-/* de letter 'e'*/
-section:nth-of-type(2) span:nth-of-type(12) {
-    position: relative;
-    top: 1.5em;
-    right: 2.4em;
-    font-size: 1.5em;
-}
-
-/* de letter 'l'*/
-section:nth-of-type(2) span:nth-of-type(13) {
-    position: relative;
-    top: 1.5em;
-    right: 2.5em;
-    font-size: 1.5em;
-}
-
-/* de letter 'd'*/
-section:nth-of-type(2) span:nth-of-type(14) {
-    position: relative;
-    top: 1.5em;
-    right: 2.6em;
-    font-size: 1.5em;
-}
-
-
-/******************************/
-/* de zwarte balk om de tekst*/
-section:nth-of-type(2) span:nth-of-type(7)::before {
-    content:"";
-    position:absolute;
-    width: 9em; height:5em;
-    border:solid .2em var(--logo-kleur);
-    border-radius: .7em;
-    right: 3em;
-
-    background-image:radial-gradient(transparent .25em, white .25em .625em, transparent .625em),
-
-    background-size:1.5em 1.5em;
-    background-repeat:no-repeat;
-    background-position:12em 10em, 11em 20em;
-    z-index: 1;
-}
-
-/* de blauwe opening van de balk*/
-section:nth-of-type(2) span:nth-of-type(7)::after {
-    content:"";
-    position:absolute;
-    width: 2em; height: .1em;
-    border:solid .25em var(--background-Duiken);
-    bottom: 1.5em;
-    left: 6.7em;
-    z-index: 2;
-}
-
-
-/************/
-/* de luchtbellen boven het logo */
-
-/*  bel nr 1 van onder naar boven*/
-section:nth-of-type(2) span:nth-of-type(4)::before {
-    content: "";
-    position: absolute;
-    width: .2em; height: .2em;
-    border:solid .175em var(--logo-kleur);
-    right: .9em;
-    bottom: 1em;
-    z-index: 110;
-
-    border-radius: 50%;
-}
-
-/*  bel nr 2 van onder naar boven*/
-section:nth-of-type(2) span:nth-of-type(4)::after {
-    content: "";
-    position: absolute;
-    width: .15em; height: .15em;
-    border:solid .16em var(--logo-kleur);
-    right: 1.3em;
-    bottom: 1.5em;
-    z-index: 110;
-
-    border-radius: 50%;
-}
-
-/*  bel nr 3 van onder naar boven*/
-section:nth-of-type(2) span:nth-of-type(5)::before {
-    content: "";
-    position: absolute;
-    width: .3em; height: .3em;
-    border:solid .3em var(--logo-kleur);
-    right: 1.3em;
-    bottom: 2em;
-    z-index: 110;
-
-    border-radius: 50%;
-}
-
-/*  bel nr 4 van onder naar boven*/
-section:nth-of-type(2) span:nth-of-type(5)::after {
-    content: "";
-    position: absolute;
-    width: .5em; height: .5em;
-    border:solid .5em var(--logo-kleur);
-    right: 2.3em;
-    bottom: 2.3em;
-    z-index: 110;
-
-    border-radius: 50%;
-}
-
-/*  bel nr 5 van onder naar boven*/
-section:nth-of-type(2) span:nth-of-type(6)::before {
-    content: "";
-    position: absolute;
-    width: .4em; height: .4em;
-    border:solid .375em var(--logo-kleur);
-    right: 3.6em;
-    bottom: 3.5em;
-    z-index: 110;
-
-    border-radius: 50%;
-}
-
-/*  bel nr 6 van onder naar boven*/
-section:nth-of-type(2) span:nth-of-type(6)::after {
-    content: "";
-    position: absolute;
-    width: 1.3em; height: 1.3em;
-    border:solid .75em var(--logo-kleur);
-    right: 1.4em;
-    bottom: 3.3em;
-    z-index: 110;
-
-    border-radius: 50%;
-}
-
-/*  bel nr 7 van onder naar boven*/
-section:nth-of-type(2) span:nth-of-type(11)::after {
-    content: "";
-    position: absolute;
-    width: .2em; height: .2em;
-    border:solid .155em var(--background-Duiken);
-    right: .65em;
-    bottom: 1.95em;
-    z-index: 11;
-
-    border-radius: 50%;
-}
-
-/***************************/
-/* de camera*/
-section:nth-of-type(2) img:nth-of-type(1) {
-    position: absolute;
-    display:block;
-    width:17em;
-    transform-origin:center;
-    z-index: 10;
-}
-
-/* camera animatie */
-section:nth-of-type(2):hover img:nth-of-type(1) {
-  animation-name: camera-animantion;
-  animation-duration: 15s;
-  animation-iteration-count: infinite;
-
-}
-
-@keyframes camera-animantion {
-    100% {
-    transform: translateX(calc(-50vw - 5em));
-  }
-}
-
-/**********************/
-/* het logo beweegt  */
-section:nth-of-type(2):hover h2 {
-  animation-name: h2-animantion;
-  animation-duration: 15s;
-  animation-delay: -.1s;
-  animation-iteration-count: infinite;
-}
-
-@keyframes h2-animantion {
-    0% {
-        transform: translateX(50vw)
-    }
-    70%, 100% {
-    transform: translateX(-20em);
-  }
-}
-
-
-/***************/
-/* vis #1 */
-section:nth-of-type(2) img:nth-of-type(2) {
-    position: absolute;
-    width:5em;
-    transform-origin:35% center;
-    z-index: 10;
-    top: 8em;
-    right: -5em;
-}
-
-section:nth-of-type(2):hover img:nth-of-type(2) {
-  animation-name: heen-en-weer, zwemmen-animation;
-  animation-duration: .5s, 5s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  animation-timing-function: ease-in-out;
-}
-
-
-/* vis #2 */
-section:nth-of-type(2) img:nth-of-type(3) {
-    position: absolute;
-    transform-origin: 35% center;
-    width: 5em;
-    z-index: 1;
-    bottom: 6em;
-    right: -8em;
-}
-
-section:nth-of-type(2):hover img:nth-of-type(3) {
-    animation-name: heen-en-weer, zwemmen-animation;
-    animation-duration: .5s, 10s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-timing-function: ease-in-out;
-}
-
-@keyframes heen-en-weer {
-    0% {
-        transform: perspective(10em) rotateY(-10deg);
-    }
-    100% {
-        transform: perspective(10em) rotateY(10deg);
-    }
-}
-
-@keyframes zwemmen-animation {
-    100% {
-        transform: translateX(-1050%);
-    }
-}
-
-
-/* water */
-@keyframes golven-animation {
-  0% {
-    border-radius:none;
-  }
-  20% {
-    border-radius:70% 40% 80% 50% / 10% 70% 40% 90%;
-  }
-  40% {
-    border-radius:35% 95% 65% 10% / 50% 30% 75% 20%;
-  }
-  60% {
-    border-radius:90% 40% 65% 35% / 50% 35% 65% 40%;
-  }
-  80% {
-    border-radius:20% 40% 60% 80% / 20% 70% 30% 50%;
-  }
-  100% {
-    border-radius:none;
-  }
-}
-
-section div {
-  width:60vw; height:4em;
-  background-color:var(--logo-kleur);
-
-  animation:golven-animation 10s linear infinite;
-  animation-play-state:paused;
-}
-
-div {
-position: absolute;
-    top: -1em;
-    left: -3em;
-}
-
-section:hover div {
-  /* met running gaat de animatie verder waar hij gebleven was */
-  animation-play-state:running;
-}
-
-
-
-
-
-
-
-
-
